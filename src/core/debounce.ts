@@ -3,10 +3,22 @@ type DebounceFunction<T extends (...args: unknown[]) => unknown> = (
 ) => void;
 
 /**
+ * @description
+ * Debounce a function to prevent it from being called too often.
  *
- * @param func
- * @param delay
- * @returns
+ * @param func - The function to debounce.
+ * @param delay - The delay in milliseconds before the function is called.
+ * @returns A debounced function.
+ *
+ * @example
+ * const debouncedFn = debounce((...args: number[]) => {
+ *   console.log(args);
+ * }, 1000);
+ *
+ * debouncedFn(1, 2, 3);
+ * debouncedFn(4, 5, 6);
+ * debouncedFn(7, 8, 9);
+ * >>> output: 7, 8, 9 after 1000ms
  */
 export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
@@ -18,14 +30,3 @@ export const debounce = <T extends (...args: unknown[]) => unknown>(
     timeout = setTimeout(() => func.apply(this, args), delay);
   } as DebounceFunction<T>;
 };
-
-// example
-// const args = [1, 2, 3];
-// const debouncedFn = debounce((...args: number[]) => {
-//   console.log(args);
-// }, 1000);
-
-// debouncedFn(1, 2, 3);
-// debouncedFn(4, 5, 6);
-// debouncedFn(7, 8, 9);
-// >>> output: 7, 8, 9 after 1000ms
