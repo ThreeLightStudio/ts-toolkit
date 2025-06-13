@@ -1,14 +1,14 @@
 /**
  * @description
- * YIQ 공식으로 RGB 색상의 밝기를 계산합니다.
+ * Calculates the brightness of an RGB color using the YIQ formula.
  *
- * @param rgb [R, G, B] 배열 (0~255)
- * @returns 밝으면 true, 어두우면 false
+ * @param rgb An object with [R, G, B] values (0~255)
+ * @returns "light" if bright, "dark" if dark, "gray" if in the middle
  *
  * @example
- * getYiqLuminance([255, 255, 255]); // true (white)
- * getYiqLuminance([0, 0, 0]);       // false (black)
- * getYiqLuminance([128, 128, 128]); // false (gray)
+ * getYiqLuminance({ r: 255, g: 255, b: 255 }); // "light" (white)
+ * getYiqLuminance({ r: 0, g: 0, b: 0 });       // "dark" (black)
+ * getYiqLuminance({ r: 128, g: 128, b: 128 }); // "gray"
  */
 export const getYiqLuminance = ({
   r,
